@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sapteh.controller.MainController">
+   <children>
+      <SplitPane dividerPositions="0.8492462311557789" layoutX="120.0" layoutY="186.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="tableView" prefHeight="335.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="idColumn" prefWidth="75.0" text="id" />
+                      <TableColumn fx:id="nameColumn" prefWidth="75.0" text="name" />
+                        <TableColumn fx:id="manufacturerColumn" prefWidth="75.0" text="manufacturer" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="75.0" text="description" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="75.0" text="quantity" />
+                        <TableColumn fx:id="costColumn" prefWidth="75.0" text="cost" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Button fx:id="buttonDelete" layoutX="63.0" layoutY="16.0" mnemonicParsing="false" onAction="#buttonCreate" text="Create" />
+                  <Button layoutX="184.0" layoutY="16.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="312.0" layoutY="16.0" mnemonicParsing="false" text="Button" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
