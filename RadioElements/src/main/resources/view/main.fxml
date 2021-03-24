@@ -26,9 +26,9 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button fx:id="buttonDelete" layoutX="63.0" layoutY="16.0" mnemonicParsing="false" onAction="#buttonCreate" text="Create" />
-                  <Button layoutX="184.0" layoutY="16.0" mnemonicParsing="false" text="Button" />
-                  <Button layoutX="312.0" layoutY="16.0" mnemonicParsing="false" text="Button" />
+                  <Button fx:id="buttonCr" layoutX="63.0" layoutY="16.0" mnemonicParsing="false" onAction="#buttonCreate" text="Create" />
+                  <Button layoutX="184.0" layoutY="16.0" mnemonicParsing="false" onAction="#buttonDelete" text="Delete" />
+                  <Button layoutX="312.0" layoutY="16.0" mnemonicParsing="false" onAction="#buttonUpdate" text="Update" />
                </children>
             </AnchorPane>
         </items>

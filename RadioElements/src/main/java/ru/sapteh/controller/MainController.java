@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -22,11 +23,14 @@ import java.io.IOException;
 
 
 public class MainController {
-    @FXML
-    public Button buttonDelete;
+
     SessionFactory factory = new Configuration().configure().buildSessionFactory();
     private final ObservableList<RadioElement> radioElements = FXCollections.observableArrayList();
+    private AnchorPane anchorPane;
+    private RadioElement selectedItem;
 
+    @FXML
+    public Button buttonCr;
 
     @FXML
     private TableView<RadioElement> tableView;
@@ -58,8 +62,29 @@ public class MainController {
         stage.setTitle("Create table");
         stage.setScene(new Scene(root));
         stage.show();
-        buttonDelete.getScene().getWindow().hide();
+        buttonCr.getScene().getWindow().hide();
 
+
+    }
+
+    @FXML
+    void buttonDelete(ActionEvent event) {
+        RadioElement selectedItem = tableView.getSelectionModel().getSelectedItem();
+        tableView.getItems().remove(selectedItem);
+        DAO<RadioElement, Integer> radioElementIntegerDAO = new RadioElementService(factory);
+        radioElementIntegerDAO.delete(selectedItem);
+    }
+
+    @FXML
+    void buttonUpdate(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/update.fxml"));
+        anchorPane = loader.load();
+        UpdateMainController updateMainController = loader.getController();
+        stage.setTitle("Update table");
+        stage.setScene(new Scene(anchorPane));
+        stage.show();
+        updateMainController.setData(selectedItem);
 
     }
 
@@ -81,6 +106,9 @@ public class MainController {
         costColumn.setCellValueFactory(c ->
                 new SimpleObjectProperty<>(c.getValue().getCost()));
 
+        tableView.getSelectionModel().selectedItemProperty().addListener((obj,oldValue,newValue) -> {
+            selectedItem = newValue;
+        });
 
     }
 
